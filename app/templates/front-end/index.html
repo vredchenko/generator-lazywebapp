@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="myNewApp">
+<head>
+  <title>My New App</title>
+  
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css" />
+
+</head>
+<body>
+
+  <div id="horizon" ng-controller="Controller">
+    <my-new-app-toolbar></my-new-app-toolbar>
+    
+    <div id="app-pane" ng-view>
+
+    </div>
+
+  </div>
+  
+  <script src="./js/bower-libs.js"></script>
+  <script src="./js/my-new-app.js"></script>
+
+</body>
+</html>

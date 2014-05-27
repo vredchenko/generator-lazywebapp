@@ -1,0 +1,20 @@
+{
+  "name": "my-new-app",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.x",
+    "grunt-contrib-uglify": "~0.4.x",
+    "grunt-contrib-jshint": "~0.10.x",
+    "grunt-contrib-watch": "~0.6.x",
+    "grunt-contrib-concat": "~0.4.x",
+    "matchdep": "~0.1.x",
+    "grunt-express": "~1.0.0-beta2",
+    "grunt-open": "~0.2.x",
+    "grunt-contrib-copy": "~0.5.x",
+    "grunt-contrib-clean": "~0.5.x",
+    "grunt-bower-concat": "~0.2.x",
+    "grunt-contrib-compass": "~0.7.2"
+  }
+}
+
