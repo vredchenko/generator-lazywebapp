@@ -78,7 +78,9 @@ var LazywebappGenerator = yeoman.generators.Base.extend({
     if (this.choices.createBackend) {
       console.log('creating directory structure for a NodeJS back-end');
       this.mkdir( 'api' );
-      this.mkdir( 'api/schemas' );
+      this.mkdir( 'api/public' );
+      this.mkdir( 'api/spec' );
+      this.mkdir( 'api/spec/schemas' );
     }
 
     if (this.choices.createFrontend) {
@@ -98,7 +100,7 @@ var LazywebappGenerator = yeoman.generators.Base.extend({
 
   },
 
-  projectFiles: function () {
+  metaFiles: function () {
     
     if (this.choices.createBackend) {
       this.copy( 'back-end/_package.json',  'api/package.json');
@@ -118,26 +120,30 @@ var LazywebappGenerator = yeoman.generators.Base.extend({
   },
 
   frontEndFiles: function() {
-    this.copy( 'front-end/index.html',                          'src/index.html' );      
-    this.copy( 'front-end/css/index.scss',                      'src/css/index.scss' );
+    if (this.choices.createFrontend) {
+      this.copy( 'front-end/index.html',                          'src/index.html' );      
+      this.copy( 'front-end/css/index.scss',                      'src/css/index.scss' );
 
-    this.copy( 'front-end/templates/my-new-app-toolbar.html',   'src/templates/my-new-app-toolbar.html' );
-    this.copy( 'front-end/templates/home.html',                 'src/templates/home.html' );
-    this.copy( 'front-end/templates/page-one.html',             'src/templates/page-one.html' );
-    this.copy( 'front-end/templates/page-two.html',             'src/templates/page-two.html' );
+      this.copy( 'front-end/templates/my-new-app-toolbar.html',   'src/templates/my-new-app-toolbar.html' );
+      this.copy( 'front-end/templates/home.html',                 'src/templates/home.html' );
+      this.copy( 'front-end/templates/page-one.html',             'src/templates/page-one.html' );
+      this.copy( 'front-end/templates/page-two.html',             'src/templates/page-two.html' );
 
-    this.copy( 'front-end/js/ng-app.js',                        'src/js/ng-app.js' );
-    this.copy( 'front-end/js/controllers/ctrl.js',              'src/js/controllers/ctrl.js' );
-    this.copy( 'front-end/js/controllers/home-ctrl.js',         'src/js/controllers/home-ctrl.js' );
-    this.copy( 'front-end/js/controllers/page-one-ctrl.js',     'src/js/controllers/page-one-ctrl.js' );
-    this.copy( 'front-end/js/controllers/page-two-ctrl.js',     'src/js/controllers/page-two-ctrl.js' );
-    this.copy( 'front-end/js/directives/my-new-app-toolbar.js', 'src/js/directives/my-new-app-toolbar.js' );
-    this.copy( 'front-end/js/providers/api-provider.js',        'src/js/providers/api-provider.js' );
-    
+      this.copy( 'front-end/js/ng-app.js',                        'src/js/ng-app.js' );
+      this.copy( 'front-end/js/controllers/ctrl.js',              'src/js/controllers/ctrl.js' );
+      this.copy( 'front-end/js/controllers/home-ctrl.js',         'src/js/controllers/home-ctrl.js' );
+      this.copy( 'front-end/js/controllers/page-one-ctrl.js',     'src/js/controllers/page-one-ctrl.js' );
+      this.copy( 'front-end/js/controllers/page-two-ctrl.js',     'src/js/controllers/page-two-ctrl.js' );
+      this.copy( 'front-end/js/directives/my-new-app-toolbar.js', 'src/js/directives/my-new-app-toolbar.js' );
+      this.copy( 'front-end/js/providers/api-provider.js',        'src/js/providers/api-provider.js' );
+    }
   },
 
   backEndFiles: function() {
-    // @todo
+    if (this.choices.createBackend) {
+      this.copy('back-end/app.js',                                'api/app.js');
+      this.copy('back-end/schemas/project.mongoose.schema.js',    'api/spec/schemas/project.mongoose.schema.js');
+    }
   }
 
 });
